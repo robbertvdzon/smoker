@@ -19,41 +19,6 @@ void setupValve(){
 
 
 void findValveTime(){
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  Serial.println(" turn open");
-//  valveTurnOpen();
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  delay(10000);
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  Serial.println(" turn close");
-//  valveTurnClosed();
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  delay(10000);
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  Serial.println(" turn stop");
-//  valveStopTurn();
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  delay(5000);
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  Serial.println(" turn open");
-//  valveTurnOpen();
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  delay(5000);
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  Serial.println(" turn close");
-//  valveTurnClosed();
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  delay(5000);
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  Serial.println(" turn stop");
-//  valveStopTurn();
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-//  delay(5000);
-//  Serial.println(" valveopen:"+String(digitalRead(valveFullyOpenSensorPin))+" valveclose:"+String(digitalRead(valveFullyClosedSensorPin)));
-
-
   
   Serial.println(" turn open");
   valveTurnOpen();
