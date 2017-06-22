@@ -13,30 +13,33 @@ void setup() {
   setupDisplay();
   setupValve();
   setupEncoder();
+  setupFan();
   findValveTime();
 }
 
 
 int outerLoop = 0;
 int lastRequiredTempValue = 0;
+int currentMode = 0;
 void loop() {
   requiredTempValue = getRequiredTempValue();
+  currentMode = getMode();
   if (lastRequiredTempValue!=requiredTempValue){
     setupPID(currentTemp, requiredTempValue);
     lastRequiredTempValue=requiredTempValue;
   }
   outerLoop++;
-  if (outerLoop%10000==0){ // check the millies to do this every 20 seconds or so
+  if (outerLoop%1000==0){ // check the millies to do this every 20 seconds or so
     currentTemp = loadTemparature();
-    fanSpeed = calculateFanSpeed(currentTemp);
+    fanSpeed = calculateFanSpeed(currentTemp, currentMode);
     writeFanSpeed(fanSpeed);
     openValveInPerc(getRequiredValvePerc());  
   }
-  if (outerLoop%30000==0){ 
+  if (outerLoop%10000==0){ 
       writeFanAndTempTo8266(currentTemp, fanSpeed);
       logValues(currentTemp, fanSpeed);
   }
-  writeDisplay(currentTemp,requiredTempValue, fanSpeed);
+  writeDisplay(currentTemp,requiredTempValue, fanSpeed, currentMode);
   delay(1);  
 }
 

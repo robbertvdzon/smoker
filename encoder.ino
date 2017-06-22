@@ -1,6 +1,9 @@
 int encoderPin1 = 2; //these pins can not be changed 2/3 are special pins
 int encoderPin2 = 3; //these pins can not be changed 2/3 are special pins
+int encoderPin3 = 13; 
 
+int lastButtonState = 1;
+int mode = 0;
 volatile int lastEncoded = 0;
 volatile long encoderValue = 440;
 long lastencoderValue = 440;
@@ -11,9 +14,11 @@ int lastLSB = 0;
 void setupEncoder(){
   pinMode(encoderPin1, INPUT); 
   pinMode(encoderPin2, INPUT);
+  pinMode(encoderPin3, INPUT);
 
   digitalWrite(encoderPin1, HIGH); //turn pullup resistor on
   digitalWrite(encoderPin2, HIGH); //turn pullup resistor on
+  digitalWrite(encoderPin3, HIGH); //turn pullup resistor on
 
   attachInterrupt(0, updateEncoder, CHANGE); 
   attachInterrupt(1, updateEncoder, CHANGE);
@@ -32,6 +37,25 @@ void updateEncoder(){
   lastEncoded = encoded; //store this value for next time
 }
 
+int getMode(){
+  return mode;
+}
+
 int getRequiredTempValue(){
+  int buttonState = digitalRead(encoderPin3);
+  if (buttonState==0 && lastButtonState==1){
+    if (mode == 0 ){
+        Serial.println("Change mode to 1");
+        mode = 1;
+    }
+    else if (mode == 1 ){
+        Serial.println("Change mode to 0");
+        mode = 0;
+    }
+    
+  }
+  lastButtonState = buttonState;
+
+  
   return encoderValue/4;
 }

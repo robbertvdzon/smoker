@@ -5,6 +5,7 @@ LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 double displayLastCurrentTemp=-1; 
 double displayLastRequiredTempValue=-1;
 double displayLastSturingValue=-1;
+int displayMode=-1;
 
 
 void setupDisplay(){
@@ -26,30 +27,39 @@ void setupDisplay(){
 
 
 
-void writeDisplay(int _currentTemp, int _requiredTempValue, int _sturingValue) {
-  if (displayLastCurrentTemp==_currentTemp && displayLastRequiredTempValue==_requiredTempValue && displayLastSturingValue==_sturingValue){
+void writeDisplay(int _currentTemp, int _requiredTempValue, int _sturingValue, int _displaymode) {
+  if (displayLastCurrentTemp==_currentTemp && displayLastRequiredTempValue==_requiredTempValue && displayLastSturingValue==_sturingValue && displayMode==_displaymode){
     // nothing changed
     return;
   }
   displayLastCurrentTemp=_currentTemp;
   displayLastRequiredTempValue=_requiredTempValue;
   displayLastSturingValue=_sturingValue;
+  displayMode=_displaymode;
 
   lcd.clear();
   lcd.setCursor(0,0); //Start at character 0 on line 0
   lcd.print("Temperatuur: ");
   lcd.print(_currentTemp);
   lcd.print(" C");
-  
+
   lcd.setCursor(0,2); //Start at character 0 on line 0
   lcd.print("Instelling : ");
   lcd.print(_requiredTempValue);
   lcd.print(" C");
 
-  lcd.setCursor(0,3); //Start at character 0 on line 0
-  lcd.print("Sturing    : ");
-  lcd.print(_sturingValue*100/256);
-  lcd.print(" %");
+  if (displayMode==1){
+    lcd.setCursor(0,3); //Start at character 0 on line 0
+    lcd.print("ALLES DICHT");
+  }
+  else{
+    lcd.setCursor(0,3); //Start at character 0 on line 0
+    lcd.print("Sturing    : ");
+    lcd.print(_sturingValue*100/256);
+    lcd.print(" %");
+  }
+  
+
   
 }
 

@@ -46,8 +46,8 @@ void openValveInPerc(unsigned long perc){
   if (currentValvePerc==perc) return;
   unsigned long now = millis();
   unsigned long diff = now - lastChangeValveTime;
-  if (diff<60000L){
-    Serial.println("valve change needed, but skipped. Valve was already changes this minute:"+String(diff));
+  if (diff<6000L){
+    Serial.println("valve change needed, but skipped. Valve was already changes this 6 seconds:"+String(diff));
     return;
   }
   Serial.println("change valve : "+String(diff));

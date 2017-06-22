@@ -5,8 +5,9 @@ double Setpoint, Input, Output;
 PID myPID(&Input, &Output, &Setpoint,2,5,1, DIRECT);
 
 
-int calculateFanSpeed(double _currentTemp)
+int calculateFanSpeed(double _currentTemp, int _currentMode)
 {
+  if (_currentMode==1) return 0;
   Input = _currentTemp; 
   myPID.Compute();
   return Output;
